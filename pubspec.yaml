@@ -1,0 +1,67 @@
+name: sazim_app
+description: "A new Flutter project."
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.5.4
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  #general fonts,image cashing,icons and util
+  r_icon_pro: ^1.0.3 #Using my own opensource package
+  cached_network_image: ^3.4.0
+  dropdown_button2: ^2.3.9
+  font_awesome_flutter: ^10.4.0
+  google_fonts: ^6.2.1
+  image_picker: ^1.1.2
+  intl: ^0.19.0
+
+  # For Biometric auth (Biometrics and FaceID)
+  local_auth: ^2.3.0
+
+  #For Firebase push notification
+  cloud_firestore: ^5.2.1
+  firebase_core: ^3.3.0
+  firebase_in_app_messaging: ^0.8.0+4
+  firebase_messaging: ^15.0.4
+  firebase_app_check: ^0.3.0+4
+
+  #For showing notification
+  flutter_local_notifications: ^17.1.2
+
+  #For state management + clean architecture implementation on the presentation layer
+  get: ^4.6.6
+#  get_cli: ^1.9.0
+
+  #For api calling
+  dio: ^5.7.0
+
+
+  #For viewing api response logs
+  pretty_dio_logger: ^1.4.0
+
+  #For basic loading animation & waiting for post api call
+  shimmer: ^3.0.0
+  loading_animation_widget: ^1.2.0+2
+  flutter_overlay_loader: ^2.0.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
