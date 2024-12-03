@@ -21,7 +21,7 @@ class RoundedActionButton extends StatelessWidget {
     return Padding(
       padding: outerPadding?? EdgeInsets.zero,
       child: ElevatedButton(
-          onPressed: (){onClick();},
+          onPressed: () => onClick(),
         style: ElevatedButton.styleFrom(
           shadowColor: Colors.transparent,
           maximumSize: Size(size.width, height??50),
@@ -29,6 +29,7 @@ class RoundedActionButton extends StatelessWidget {
           backgroundColor: backgroundColor ?? AppColor.primaryDefault,
           padding: padding,
           elevation: 0,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
           overlayColor: overlayColor?? AppColor.neutralsBg
         ),
           child: Text(

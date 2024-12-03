@@ -1,9 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class SignUpController extends GetxController {
-  //TODO: Implement SignUpController
+import '../../../../routes/app_pages.dart';
 
-  final count = 0.obs;
+class SignUpController extends GetxController {
+
+  final firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final emailController = TextEditingController();
+  final addressController = TextEditingController();
+  final phoneController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+
   @override
   void onInit() {
     super.onInit();
@@ -16,8 +25,18 @@ class SignUpController extends GetxController {
 
   @override
   void onClose() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    addressController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    phoneController.dispose();
     super.onClose();
   }
 
-  void increment() => count.value++;
+  void goToLogin(){
+    Get.offAndToNamed(Routes.LOGIN);
+  }
+
 }

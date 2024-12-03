@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../../../routes/app_pages.dart';
+
 class LoginController extends GetxController {
   //TODO: Implement LoginController
 
@@ -22,6 +24,10 @@ class LoginController extends GetxController {
     emailController.dispose();
     passwordController.dispose();
     super.onClose();
+  }
+
+  void goToSignUp(){
+    Get.offAndToNamed(Routes.SIGN_UP);
   }
 
 

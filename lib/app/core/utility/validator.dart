@@ -17,6 +17,15 @@ class Validator{
     return null;
   }
 
+  String? validateAddress(String? value) {
+    if (value!.isEmpty) {
+      return "Please enter your address";
+    } else if (value.length < 6) {
+      return "Your address is too short";
+    }
+    return null;
+  }
+
   String? validateName(String? value) {
     if (value!.isEmpty) {
       return "Please enter name";
@@ -34,6 +43,15 @@ class Validator{
       {
         return "Please enter a valid price";
       }
+    return null;
+  }
+
+  String? validateBangladeshNumber(String? value) {
+    if (value!.isEmpty) {
+      return "Please enter a mobile number";
+    } else if (!RegExp(r'^01[3-9]\d{8}$').hasMatch(value)) {
+      return "Please enter a valid number";
+    }
     return null;
   }
 

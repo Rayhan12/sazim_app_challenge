@@ -45,8 +45,8 @@ class MyApp extends StatelessWidget {
           seedColor: AppColor.primaryDefault,
           secondary: AppColor.secondaryDefault,
           primary: AppColor.primaryDefault,
+        ),
 
-        )
       ),
       themeMode: ThemeMode.dark,
       initialRoute: AppPages.INITIAL,
