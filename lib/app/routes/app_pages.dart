@@ -4,8 +4,24 @@ import '../modules/auth/login/bindings/login_binding.dart';
 import '../modules/auth/login/views/login_view.dart';
 import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
 import '../modules/auth/sign_up/views/sign_up_view.dart';
+import '../modules/history/bindings/history_binding.dart';
+import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/product_category_select/bindings/product_category_select_binding.dart';
+import '../modules/product_category_select/views/product_category_select_view.dart';
+import '../modules/product_description_enter/bindings/product_description_enter_binding.dart';
+import '../modules/product_description_enter/views/product_description_enter_view.dart';
+import '../modules/product_image_picker/bindings/product_image_picker_binding.dart';
+import '../modules/product_image_picker/views/product_image_picker_view.dart';
+import '../modules/product_management/bindings/product_management_binding.dart';
+import '../modules/product_management/views/product_management_view.dart';
+import '../modules/product_pricing_setup/bindings/product_pricing_setup_binding.dart';
+import '../modules/product_pricing_setup/views/product_pricing_setup_view.dart';
+import '../modules/shop/bindings/shop_binding.dart';
+import '../modules/shop/views/shop_view.dart';
+import '../modules/user_products/bindings/user_products_binding.dart';
+import '../modules/user_products/views/user_products_view.dart';
 
 part 'app_routes.dart';
 
@@ -29,6 +45,46 @@ class AppPages {
       name: _Paths.SIGN_UP,
       page: () => const SignUpView(),
       binding: SignUpBinding(),
+    ),
+    GetPage(
+      name: _Paths.USER_PRODUCTS,
+      page: () => const UserProductsView(),
+      binding: UserProductsBinding(),
+    ),
+    GetPage(
+      name: _Paths.SHOP,
+      page: () => const ShopView(),
+      binding: ShopBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_MANAGEMENT,
+      page: () => const ProductManagementView(),
+      binding: ProductManagementBinding(),
+    ),
+    GetPage(
+      name: _Paths.HISTORY,
+      page: () => const HistoryView(),
+      binding: HistoryBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_CATEGORY_SELECT,
+      page: () => const ProductCategorySelectView(),
+      binding: ProductCategorySelectBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_DESCRIPTION_ENTER,
+      page: () => const ProductDescriptionEnterView(),
+      binding: ProductDescriptionEnterBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_IMAGE_PICKER,
+      page: () => const ProductImagePickerView(),
+      binding: ProductImagePickerBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_PRICING_SETUP,
+      page: () => const ProductPricingSetupView(),
+      binding: ProductPricingSetupBinding(),
     ),
   ];
 }

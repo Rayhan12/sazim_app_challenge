@@ -30,5 +30,10 @@ class LoginController extends GetxController {
     Get.offAndToNamed(Routes.SIGN_UP);
   }
 
+  void logInUser(){
+    Get.offAndToNamed(Routes.HOME);
+    ///Todo: Implement login logic
+  }
+
 
 }

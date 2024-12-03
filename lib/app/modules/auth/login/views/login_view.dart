@@ -7,6 +7,7 @@ import 'package:sazim_app/app/core/widgets/buttons/rounded_action_buttons.dart';
 import 'package:sazim_app/app/core/widgets/input_widgets/password_input_field_single.dart';
 import 'package:sazim_app/app/core/widgets/input_widgets/simple_input_field.dart';
 import 'package:sazim_app/app/core/widgets/message_with_action.dart';
+import 'package:sazim_app/app/core/widgets/title_content.dart';
 import 'package:sazim_app/app/modules/auth/login/widgets/biometric_login_button.dart';
 
 import '../../../../core/theme/color_config.dart';
@@ -26,16 +27,7 @@ class LoginView extends GetView<LoginController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "LOGIN",
-                style: AppText().title1.copyWith(
-                    color: AppColor.primaryDefault,
-                    fontWeight: FontWeight.w800),
-              ),
-              Text(
-                "Login with your email and password",
-                style: AppText().body,
-              ),
+              const TitleContent(title: "LOGIN", content: "Login with your email and password"),
               const SizedBox(height: 45),
               SimpleInputField(
                 controller: controller.emailController,
@@ -56,7 +48,9 @@ class LoginView extends GetView<LoginController> {
               ),
               const SizedBox(height: 15),
               RoundedActionButton(
-                onClick: (){},
+                onClick: (){
+                  controller.logInUser();
+                },
                 title: "Login",
               ),
               const SizedBox(height: 15),

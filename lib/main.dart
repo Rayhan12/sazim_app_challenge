@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:get/get.dart';
+import 'package:sazim_app/app/core/dependency_injection/dependency_injection.dart';
 import 'package:sazim_app/app/core/theme/color_config.dart';
 
 import 'app/routes/app_pages.dart';
@@ -22,6 +23,7 @@ Future<void> loadEnv() async {
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  DependencyInjection.init();
   await loadEnv();
   runApp(const MyApp());
 }
@@ -48,7 +50,7 @@ class MyApp extends StatelessWidget {
         ),
 
       ),
-      themeMode: ThemeMode.dark,
+      // themeMode: ThemeMode.dark,
       initialRoute: AppPages.INITIAL,
       getPages: AppPages.routes,
     );

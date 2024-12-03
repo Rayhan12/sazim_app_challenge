@@ -19,7 +19,7 @@ class AppText{
   TextStyle title2 = GoogleFonts.asap(
       fontSize: 22,
       fontWeight: FontWeight.w700,
-      color: AppColor.textPrimary
+      color: AppColor.textSecondary
   );
 
   TextStyle title3 = GoogleFonts.asap(

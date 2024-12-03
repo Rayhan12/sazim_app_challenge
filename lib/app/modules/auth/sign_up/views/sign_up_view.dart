@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:r_icon_pro/r_icon_pro.dart';
+import 'package:sazim_app/app/core/widgets/title_content.dart';
 
 import '../../../../core/theme/color_config.dart';
 import '../../../../core/theme/text_config.dart';
@@ -27,16 +28,7 @@ class SignUpView extends GetView<SignUpController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "Sign Up",
-                style: AppText().title1.copyWith(
-                    color: AppColor.primaryDefault,
-                    fontWeight: FontWeight.w800),
-              ),
-              Text(
-                "Lets sign you up with the credentials below",
-                style: AppText().body,
-              ),
+              const TitleContent(title: "Sign Up", content: "Lets sign you up with the credentials below"),
               const SizedBox(height: 20),
 
               SimpleInputField(
