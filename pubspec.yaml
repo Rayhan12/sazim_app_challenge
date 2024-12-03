@@ -22,9 +22,11 @@ dependencies:
   google_fonts: ^6.2.1
   image_picker: ^1.1.2
   intl: ^0.19.0
+  flutter_dotenv: ^5.2.1
 
   # For Biometric auth (Biometrics and FaceID)
   local_auth: ^2.3.0
+  flutter_secure_storage: ^9.2.2
 
   #For Firebase push notification
   cloud_firestore: ^5.2.1
@@ -38,7 +40,6 @@ dependencies:
 
   #For state management + clean architecture implementation on the presentation layer
   get: ^4.6.6
-#  get_cli: ^1.9.0
 
   #For api calling
   dio: ^5.7.0
@@ -65,3 +66,4 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/
+    - .env

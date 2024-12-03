@@ -1,0 +1,4 @@
+# REMOVE THE "example_" from the beginning of this file or make a new .env file
+# Update the values with your custom values
+
+BASE_URL : 'http://127.0.0.1:8000/'

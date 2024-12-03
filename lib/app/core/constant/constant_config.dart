@@ -1,0 +1,1 @@
+const double borderSideWidth = 1.5;
