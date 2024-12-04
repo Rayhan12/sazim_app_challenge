@@ -32,9 +32,8 @@ class ProductManagementController extends GetxController {
 
 
   void saveDataAndGoToCategorySelection(){
-
     // If current form is valid save and go to next page
-
+    Get.focusScope?.unfocus();
     if(formKey.currentState!.validate())
       {
         productCreationService.updateProductTitle(productTitle: titleController.text);

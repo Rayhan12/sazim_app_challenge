@@ -34,6 +34,7 @@ class ProductDescriptionEnterController extends GetxController {
   }
 
   void saveDataAndGoToProductImagePicker() {
+    Get.focusScope?.unfocus();
     // If current form is valid save and go to next page
     if(formKey.currentState!.validate())
     {

@@ -32,6 +32,7 @@ class ProductCategorySelectController extends GetxController {
   }
 
   void saveDataAndGoToProductDescription(){
+    Get.focusScope?.unfocus();
     // If current form is valid save and go to next page
     if(formKey.currentState!.validate())
     {
