@@ -15,7 +15,6 @@ class SimpleInputField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final TextInputType? inputType;
   final String? suffixText;
-  final IconData? prefixIcon;
   final Color? backgroundColor;
   final bool? viewOnly;
   final bool? needTitle;
@@ -26,6 +25,7 @@ class SimpleInputField extends StatefulWidget {
   final Function? onValueChange;
   final TextStyle? titleStyle;
   final Widget? prefixWidget;
+  final IconData? prefixIcon;
 
   final FormFieldValidator<String>? validatorClass;
 

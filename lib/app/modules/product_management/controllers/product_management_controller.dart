@@ -10,13 +10,7 @@ class ProductManagementController extends GetxController {
   ProductManagementController({required this.productCreationService});
 
   final titleController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-
-  // final categoryController = TextEditingController();
-  // final descriptionController = TextEditingController();
-  // final priceController = TextEditingController();
-  // final rentController = TextEditingController();
-  // final rentOptionController = TextEditingController();
+  final formKey = GlobalKey<FormState>(debugLabel: "Product Name Form");
 
 
   @override

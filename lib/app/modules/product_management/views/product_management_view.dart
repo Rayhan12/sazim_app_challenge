@@ -19,12 +19,12 @@ class ProductManagementView extends GetView<ProductManagementController> {
     return Scaffold(
       appBar: AppBar(),
       body: Padding(
+        key: UniqueKey(),
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const TitleContent(title: "Add Product", content: "Let's create some listings"),
-
             const SizedBox(height: 45),
             Form(
               key: controller.formKey,
