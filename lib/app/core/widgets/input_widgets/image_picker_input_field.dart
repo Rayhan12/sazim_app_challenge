@@ -12,7 +12,7 @@ import 'package:sazim_app/app/core/theme/asset_config.dart';
 import '../../custom_controllers/file_upload_controller.dart';
 import '../../theme/color_config.dart';
 import '../../theme/text_config.dart';
-import '../Loading.dart';
+import '../loading.dart';
 
 class ImagePickerInputField extends StatefulWidget {
   final String imagePath;

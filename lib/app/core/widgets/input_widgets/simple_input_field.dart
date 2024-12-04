@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../constant/constant_config.dart';
 import '../../theme/color_config.dart';
@@ -80,7 +81,7 @@ class _SimpleInputFieldState extends State<SimpleInputField> {
             // counter:Text(""),
             errorStyle: AppText().callOut.copyWith(fontSize: 11, color: AppColor.semanticsError),
             contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
-            label: FocusScope.of(context).focusedChild != null
+            label: Get.focusScope!.hasFocus
                 ? RichText(
                 text: TextSpan(
                     children:

@@ -19,51 +19,57 @@ class LoginView extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-        appBar: AppBar(),
+        // appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const TitleContent(title: "LOGIN", content: "Login with your email and password"),
-              const SizedBox(height: 45),
-              SimpleInputField(
-                controller: controller.emailController,
-                inputType: TextInputType.emailAddress,
-                hintText: "Enter your email",
-                errorMessage: "Please enter a valid email",
-                fieldTitle: "Email",
-                needTitle: true,
-                validatorClass: Validator().validateEmail,
-                prefixIcon: RIcon.Letter,
-              ),
-              const SizedBox(height: 15),
-              PasswordInputFieldSingle(
-                password: controller.passwordController,
-                prefixIcon: RIcon.Lock,
-                hintText: "Enter your password",
-                fieldTitle: "Password",
-              ),
-              const SizedBox(height: 15),
-              RoundedActionButton(
-                onClick: (){
-                  controller.logInUser();
-                },
-                title: "Login",
-              ),
-              const SizedBox(height: 15),
-              MessageWithAction(
-                message: "Don't have an account?",
-                buttonText: "Sign Up",
-                onClick: () => controller.goToSignUp(),
-              ),
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: size.height + 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const TitleContent(title: "LOGIN", content: "Login with your email and password"),
+                  const SizedBox(height: 45),
+                  SimpleInputField(
+                    controller: controller.emailController,
+                    inputType: TextInputType.emailAddress,
+                    hintText: "Enter your email",
+                    errorMessage: "Please enter a valid email",
+                    fieldTitle: "Email",
+                    needTitle: true,
+                    validatorClass: Validator().validateEmail,
+                    prefixIcon: RIcon.Letter,
+                  ),
+                  const SizedBox(height: 15),
+                  PasswordInputFieldSingle(
+                    password: controller.passwordController,
+                    prefixIcon: RIcon.Lock,
+                    hintText: "Enter your password",
+                    fieldTitle: "Password",
+                  ),
+                  const SizedBox(height: 15),
+                  RoundedActionButton(
+                    onClick: (){
+                      controller.logInUser();
+                    },
+                    title: "Login",
+                  ),
+                  const SizedBox(height: 15),
+                  MessageWithAction(
+                    message: "Don't have an account?",
+                    buttonText: "Sign Up",
+                    onClick: () => controller.goToSignUp(),
+                  ),
 
-              const SizedBox(height: 20,),
+                  const SizedBox(height: 20,),
 
-              BiometricLoginButton(onClick: (){})
-            ],
+                  BiometricLoginButton(onClick: (){})
+                ],
+              ),
+            ),
           ),
         ));
   }

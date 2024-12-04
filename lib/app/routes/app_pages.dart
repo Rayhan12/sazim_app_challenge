@@ -10,6 +10,8 @@ import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/product_category_select/bindings/product_category_select_binding.dart';
 import '../modules/product_category_select/views/product_category_select_view.dart';
+import '../modules/product_creation_summary/bindings/product_creation_summary_binding.dart';
+import '../modules/product_creation_summary/views/product_creation_summary_view.dart';
 import '../modules/product_description_enter/bindings/product_description_enter_binding.dart';
 import '../modules/product_description_enter/views/product_description_enter_view.dart';
 import '../modules/product_image_picker/bindings/product_image_picker_binding.dart';
@@ -85,6 +87,11 @@ class AppPages {
       name: _Paths.PRODUCT_PRICING_SETUP,
       page: () => const ProductPricingSetupView(),
       binding: ProductPricingSetupBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_CREATION_SUMMARY,
+      page: () => const ProductCreationSummaryView(),
+      binding: ProductCreationSummaryBinding(),
     ),
   ];
 }
