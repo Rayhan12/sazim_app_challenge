@@ -30,8 +30,8 @@ class ProductDescriptionEnterView
                 key: controller.formKey,
                 child: MultiLineInputField(
                   controller: controller.descriptionController,
-                  hintText: "Select Categories",
-                  fieldTitle: "Select Categories",
+                  hintText: "Product Description",
+                  fieldTitle: "Product Description",
                   needTitle: true,
                   numberOfLines: 7,
                   validatorClass: Validator().validateDescription,
