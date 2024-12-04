@@ -40,14 +40,22 @@ class ProductManagementView extends GetView<ProductManagementController> {
               ),
             ),
 
-            const Spacer(),
-            RoutingNavigationIndicator(
-              rightRoutingType: NextRoutingStrategy(),
-              rightOnClick: ()=> controller.saveDataAndGoToCategorySelection(),
-            ),
-            const SizedBox(height: 45),
+            // const Spacer(),
+            //
+            // const SizedBox(height: 45),
 
           ],
+        ),
+      ),
+
+      bottomNavigationBar: SizedBox(
+        height: 100,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: RoutingNavigationIndicator(
+            rightRoutingType: NextRoutingStrategy(),
+            rightOnClick: ()=> controller.saveDataAndGoToCategorySelection(),
+          ),
         ),
       ),
     );

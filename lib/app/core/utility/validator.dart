@@ -26,6 +26,15 @@ class Validator{
     return null;
   }
 
+  String? validateDescription(String? value) {
+    if (value!.isEmpty) {
+      return "Please enter your product description";
+    } else if (value.length < 6) {
+      return "Your description is too short";
+    }
+    return null;
+  }
+
   String? validateName(String? value) {
     if (value!.isEmpty) {
       return "Please enter name";

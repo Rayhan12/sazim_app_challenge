@@ -38,17 +38,18 @@ class ProductCategorySelectView
               ),
             ),
 
-            const Spacer(),
-            RoutingNavigationIndicator(
-              leftOnClick: ()=> controller.goToPreviousPage(),
-              leftRoutingType: PreviousRoutingStrategy(),
-
-              rightRoutingType: NextRoutingStrategy(),
-              rightOnClick: ()=> controller.saveDataAndGoToProductDescription(),
-            ),
-            const SizedBox(height: 45),
 
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20),
+        child: RoutingNavigationIndicator(
+          leftOnClick: ()=> controller.goToPreviousPage(),
+          leftRoutingType: PreviousRoutingStrategy(),
+
+          rightRoutingType: NextRoutingStrategy(),
+          rightOnClick: ()=> controller.saveDataAndGoToProductDescription(),
         ),
       ),
     );
