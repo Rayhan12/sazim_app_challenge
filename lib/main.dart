@@ -11,6 +11,7 @@ import 'app/routes/app_pages.dart';
 Future<void> loadEnv() async {
   try {
     await dotenv.load(fileName: ".env");
+    print(dotenv.env['BASE_URL']);
     if (kDebugMode) {
       print("Environment variables loaded successfully.");
     }

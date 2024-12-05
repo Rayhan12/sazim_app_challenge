@@ -11,6 +11,7 @@ import '../../utility/validator.dart';
 
 class PasswordInputFieldSingle extends StatefulWidget {
   final TextEditingController password;
+  final TextEditingController? passwordMatch;
   final String fieldTitle;
   final String hintText;
   final Color? backgroundColor;
@@ -28,7 +29,7 @@ class PasswordInputFieldSingle extends StatefulWidget {
     this.textInputAction,
     this.backgroundColor,
     this.borderRadius,
-    this.prefixWidget,
+    this.prefixWidget, this.passwordMatch,
   });
 
   @override
@@ -70,7 +71,14 @@ class _PasswordInputFieldSingleState extends State<PasswordInputFieldSingle> {
             }
           },
           textInputAction: widget.textInputAction ?? TextInputAction.done,
-          validator: Validator().validatePassword,
+          validator: widget.passwordMatch == null? Validator().validatePassword
+              : (value){
+            if(widget.passwordMatch!.text.compareTo(widget.password.text) != 0)
+              {
+                return "Password doesn't match, Please try again";
+              }
+            return null;
+          },
           decoration: InputDecoration(
               focusColor: AppColor.primaryDefault,
               filled: true,
