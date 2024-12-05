@@ -88,7 +88,7 @@ class _PasswordInputFieldSingleState extends State<PasswordInputFieldSingle> {
                     )
                   : null,
               contentPadding: const EdgeInsets.symmetric(vertical: 13, horizontal: 20),
-              label: Get.focusScope!.hasFocus
+              label: Get.focusScope !=null &&  Get.focusScope!.hasFocus
                   ? RichText(
                       text: TextSpan(children: [
                       TextSpan(text: widget.fieldTitle, style: AppText().body.copyWith(color: AppColor.textPrimary)),

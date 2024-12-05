@@ -5,13 +5,14 @@ import 'package:sazim_app/app/core/utility/validator.dart';
 import 'package:sazim_app/app/core/widgets/input_widgets/multi_line_input_field.dart';
 
 import '../../../core/widgets/buttons/routing_button.dart';
+import '../../../core/widgets/product_creation_progress_indicator.dart';
 import '../../../core/widgets/routing_navigation_indicator.dart';
 import '../../../core/widgets/title_content.dart';
 import '../controllers/product_description_enter_controller.dart';
 
-class ProductDescriptionEnterView
-    extends GetView<ProductDescriptionEnterController> {
+class ProductDescriptionEnterView extends GetView<ProductDescriptionEnterController> {
   const ProductDescriptionEnterView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +25,7 @@ class ProductDescriptionEnterView
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TitleContent(title: "Enter Description", content: "Let's create some listings"),
-
-              const SizedBox(height: 45),
+              ProductCreationProgressIndicator(value: controller.productCreationService.getProgress()),
               Form(
                 key: controller.formKey,
                 child: MultiLineInputField(
@@ -37,21 +37,17 @@ class ProductDescriptionEnterView
                   validatorClass: Validator().validateDescription,
                 ),
               ),
-
-
             ],
           ),
         ),
       ),
-
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(20),
         child: RoutingNavigationIndicator(
-          leftOnClick: ()=> controller.goToPreviousPage(),
+          leftOnClick: () => controller.goToPreviousPage(),
           leftRoutingType: PreviousRoutingStrategy(),
-
           rightRoutingType: NextRoutingStrategy(),
-          rightOnClick: ()=> controller.saveDataAndGoToProductImagePicker(),
+          rightOnClick: () => controller.saveDataAndGoToProductImagePicker(),
         ),
       ),
     );

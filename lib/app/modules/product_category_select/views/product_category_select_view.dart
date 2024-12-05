@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:r_icon_pro/r_icon_pro.dart';
 import 'package:sazim_app/app/core/widgets/input_widgets/multi_select_drop_down.dart';
 import '../../../core/widgets/buttons/routing_button.dart';
+import '../../../core/widgets/product_creation_progress_indicator.dart';
 import '../../../core/widgets/routing_navigation_indicator.dart';
 import '../../../core/widgets/title_content.dart';
 import '../controllers/product_category_select_controller.dart';
@@ -22,8 +23,7 @@ class ProductCategorySelectView
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const TitleContent(title: "Select Category", content: "Let's create some listings"),
-
-            const SizedBox(height: 45),
+            ProductCreationProgressIndicator(value: controller.productCreationService.getProgress()),
             Form(
               key: controller.formKey,
               child: MultiSelectDropDownInputField(

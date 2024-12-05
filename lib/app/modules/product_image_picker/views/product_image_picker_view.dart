@@ -6,6 +6,7 @@ import 'package:sazim_app/app/core/theme/text_config.dart';
 import 'package:sazim_app/app/core/widgets/input_widgets/image_picker_input_field.dart';
 
 import '../../../core/widgets/buttons/routing_button.dart';
+import '../../../core/widgets/product_creation_progress_indicator.dart';
 import '../../../core/widgets/routing_navigation_indicator.dart';
 import '../../../core/widgets/title_content.dart';
 import '../controllers/product_image_picker_controller.dart';
@@ -26,7 +27,10 @@ class ProductImagePickerView extends GetView<ProductImagePickerController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const TitleContent(title: "Select Image", content: "Let's create some listings"),
-              const SizedBox(height: 45),
+              Obx(() {
+                  return ProductCreationProgressIndicator(key: UniqueKey(),value: controller.productCreationService.getProgress());
+                }
+              ),
               ImagePickerInputField(
                 imageBoxSize: Size(size.width, 300),
                 imageSize: Size(size.width, 280),

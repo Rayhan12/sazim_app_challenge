@@ -21,4 +21,11 @@ class ProductCreationSummaryController extends GetxController {
     super.onClose();
   }
 
+  void goToPreviousPage() {
+    Get.back();
+  }
+
+  saveDataAndSubmitForProductCreation() {
+    /// Todo: implement data save and service clear with navigation
+  }
 }

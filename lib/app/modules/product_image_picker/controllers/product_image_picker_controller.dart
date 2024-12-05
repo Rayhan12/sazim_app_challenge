@@ -14,6 +14,8 @@ class ProductImagePickerController extends GetxController {
   final fileUploadController = FileUploaderController();
   RxBool showError = false.obs;
 
+  int index = 4;
+
   @override
   void onInit() {
     fileUploadController.setImageFile(selectedFile: XFile(productCreationService.filePath.value));
@@ -22,6 +24,7 @@ class ProductImagePickerController extends GetxController {
 
   @override
   void onReady() {
+    productCreationService.setProgress(index: index);
     super.onReady();
   }
 
@@ -32,6 +35,7 @@ class ProductImagePickerController extends GetxController {
   }
 
   void goToPreviousPage() {
+    productCreationService.setProgress(index: index-1);
     Get.back();
   }
 
@@ -40,6 +44,7 @@ class ProductImagePickerController extends GetxController {
     Get.focusScope?.unfocus();
     if(fileUploadController.hasImageFile())
     {
+      productCreationService.setProgress(index: index+1);
       showError.value = false;
       productCreationService.updateProductImage(filePath: fileUploadController.imageFile.path);
       Get.toNamed(Routes.PRODUCT_PRICING_SETUP);

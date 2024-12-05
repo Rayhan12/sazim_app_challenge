@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:get/get.dart';
+
 
 class ProductCreationService extends GetxService{
   RxString productTitle = "".obs;
@@ -10,6 +9,9 @@ class ProductCreationService extends GetxService{
   RxDouble sellingPrice = 0.0.obs;
   RxDouble rentPrice = 0.0.obs;
   RxString rentOption = "".obs;
+
+  int totalSteps = 5;
+  RxInt currentStep = 1.obs;
 
 
   void updateProductTitle({required String productTitle})
@@ -48,7 +50,17 @@ class ProductCreationService extends GetxService{
     sellingPrice = 0.0.obs;
     rentPrice = 0.0.obs;
     rentOption = "".obs;
+    currentStep = 1.obs;
   }
+  void setProgress({required int index}) {
+    currentStep.value = index;
+  }
+  double getProgress() {
+    return currentStep.value/totalSteps;
+  }
+
+
+
 
   @override
   String toString() {

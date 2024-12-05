@@ -12,8 +12,11 @@ class ProductDescriptionEnterController extends GetxController {
   final formKey = GlobalKey<FormState>();
   final descriptionController =  TextEditingController();
 
+  int index = 3;
+
   @override
   void onInit() {
+    productCreationService.setProgress(index: index);
     descriptionController.text = productCreationService.description.value;
     super.onInit();
   }
@@ -30,6 +33,7 @@ class ProductDescriptionEnterController extends GetxController {
   }
 
   void goToPreviousPage() {
+    productCreationService.setProgress(index: index-1);
     Get.back();
   }
 
@@ -38,6 +42,7 @@ class ProductDescriptionEnterController extends GetxController {
     // If current form is valid save and go to next page
     if(formKey.currentState!.validate())
     {
+      productCreationService.setProgress(index: index+1);
       productCreationService.updateProductDescription(description: descriptionController.text);
       Get.toNamed(Routes.PRODUCT_IMAGE_PICKER);
     }

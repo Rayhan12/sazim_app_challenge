@@ -10,11 +10,13 @@ class ProductManagementController extends GetxController {
   ProductManagementController({required this.productCreationService});
 
   final titleController = TextEditingController();
-  final formKey = GlobalKey<FormState>(debugLabel: "Product Name Form");
+  final formKey = GlobalKey<FormState>();
 
+  int index = 1;
 
   @override
   void onInit() {
+    productCreationService.setProgress(index: index);
     super.onInit();
   }
 
@@ -36,6 +38,7 @@ class ProductManagementController extends GetxController {
     Get.focusScope?.unfocus();
     if(formKey.currentState!.validate())
       {
+        productCreationService.setProgress(index: index+1);
         productCreationService.updateProductTitle(productTitle: titleController.text);
         Get.toNamed(Routes.PRODUCT_CATEGORY_SELECT);
       }

@@ -81,7 +81,7 @@ class _SimpleInputFieldState extends State<SimpleInputField> {
             // counter:Text(""),
             errorStyle: AppText().callOut.copyWith(fontSize: 11, color: AppColor.semanticsError),
             contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 13),
-            label: Get.focusScope!.hasFocus
+            label: Get.focusScope !=null && Get.focusScope!.hasFocus
                 ? RichText(
                 text: TextSpan(
                     children:
