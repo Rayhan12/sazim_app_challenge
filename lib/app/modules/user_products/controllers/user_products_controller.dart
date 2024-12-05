@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sazim_app/app/routes/app_pages.dart';
 
 class UserProductsController extends GetxController {
 
@@ -22,5 +23,6 @@ class UserProductsController extends GetxController {
     super.onClose();
   }
 
+  void goToEditProduct() => Get.toNamed(Routes.EDIT_PRODUCT);
 
 }

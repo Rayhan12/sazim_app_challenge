@@ -4,6 +4,8 @@ import '../modules/auth/login/bindings/login_binding.dart';
 import '../modules/auth/login/views/login_view.dart';
 import '../modules/auth/sign_up/bindings/sign_up_binding.dart';
 import '../modules/auth/sign_up/views/sign_up_view.dart';
+import '../modules/edit_product/bindings/edit_product_binding.dart';
+import '../modules/edit_product/views/edit_product_view.dart';
 import '../modules/history/bindings/history_binding.dart';
 import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -92,6 +94,11 @@ class AppPages {
       name: _Paths.PRODUCT_CREATION_SUMMARY,
       page: () => const ProductCreationSummaryView(),
       binding: ProductCreationSummaryBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_PRODUCT,
+      page: () => const EditProductView(),
+      binding: EditProductBinding(),
     ),
   ];
 }

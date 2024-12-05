@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:sazim_app/app/core/services/auth_service.dart';
 import 'package:sazim_app/app/core/services/product_creation_service.dart';
+import 'package:sazim_app/app/data/repositories/ProductManagementRepositoryImpl.dart';
 import 'package:sazim_app/app/data/repositories/user_auth_repository_impl.dart';
 import 'package:sazim_app/app/modules/home/controllers/home_controller.dart';
 import 'package:sazim_app/app/modules/product_management/controllers/product_management_controller.dart';
@@ -12,6 +13,7 @@ class DependencyInjection{
 
    ///Register Repository
     Get.put(UserAuthRepositoryImpl());
+    Get.put(ProductManagementRepositoryImpl());
 
     /// Register Services
     Get.put<ProductCreationService>(ProductCreationService(),permanent: true);

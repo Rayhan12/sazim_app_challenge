@@ -7,43 +7,6 @@ import '../../../core/theme/color_config.dart';
 import '../../../core/theme/text_config.dart';
 import '../controllers/user_products_controller.dart';
 
-// class UserProductsView extends GetView<UserProductsController> {
-//   const UserProductsView({super.key});
-//   @override
-//   Widget build(BuildContext context) {
-//     return Padding(
-//       padding: const EdgeInsets.symmetric(horizontal: 15),
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Text(
-//             "WELCOME @User Name",
-//             style: AppText().title1.copyWith(
-//                 color: AppColor.primaryDefault,
-//                 fontWeight: FontWeight.w800),
-//           ),
-//           Text(
-//             "How are you doing today!",
-//             style: AppText().body,
-//           ),
-//           const SizedBox(height: 25),
-//
-//           Text("My Products",style: AppText().title2,),
-//           Expanded(
-//             child: ListView.builder(
-//               itemCount: 12,
-//               padding: const EdgeInsets.symmetric(vertical: 10),
-//               /// Todo: Implement widget based card here, Defile entity model first
-//               itemBuilder: (context,index) => const Card(child: SizedBox(height: 160,width: double.infinity,),),
-//             ),
-//           )
-//
-//
-//         ],
-//       ),
-//     );
-//   }
-// }
 
 class UserProductsView extends GetView<UserProductsController> {
   const UserProductsView({super.key});
@@ -90,11 +53,14 @@ class UserProductsView extends GetView<UserProductsController> {
             itemCount: 12,
             // padding: const EdgeInsets.symmetric(vertical: 10),
             /// Todo: Implement widget based card here, Defile entity model first
-            itemBuilder: (context, index) => const Card(
-              color: AppColor.primaryDefault,
-              child: SizedBox(
-                height: 160,
-                width: double.infinity,
+            itemBuilder: (context, index) => InkWell(
+              onTap: ()=>controller.goToEditProduct(),
+              child: const Card(
+                color: AppColor.primaryDefault,
+                child: SizedBox(
+                  height: 160,
+                  width: double.infinity,
+                ),
               ),
             ),
           )

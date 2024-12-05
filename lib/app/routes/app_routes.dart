@@ -15,6 +15,7 @@ abstract class Routes {
   static const PRODUCT_IMAGE_PICKER = _Paths.PRODUCT_IMAGE_PICKER;
   static const PRODUCT_PRICING_SETUP = _Paths.PRODUCT_PRICING_SETUP;
   static const PRODUCT_CREATION_SUMMARY = _Paths.PRODUCT_CREATION_SUMMARY;
+  static const EDIT_PRODUCT = _Paths.EDIT_PRODUCT;
 }
 
 abstract class _Paths {
@@ -31,4 +32,5 @@ abstract class _Paths {
   static const PRODUCT_IMAGE_PICKER = '/product-image-picker';
   static const PRODUCT_PRICING_SETUP = '/product-pricing-setup';
   static const PRODUCT_CREATION_SUMMARY = '/product-creation-summary';
+  static const EDIT_PRODUCT = '/edit-product';
 }
