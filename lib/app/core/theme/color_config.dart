@@ -25,7 +25,7 @@ abstract class AppColor{
 
   ///Neutrals
   static const neutralsBg = Color(0xffFFFFFF);
-  static const neutralCards = Color(0xffFFFFFF);
+  static const neutralCards = Color(0xfffaf9f9);
   static const neutralFields = Color(0xffF3F3F5);
   static const neutralStroke = Color(0xffE5E5E5);
 }

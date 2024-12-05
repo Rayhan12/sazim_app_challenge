@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sazim_app/app/core/widgets/cards/product_card.dart';
 import 'package:sazim_app/app/core/widgets/title_content.dart';
+import 'package:sazim_app/app/domain/entities/product_entity.dart';
 
 import '../../../core/theme/color_config.dart';
 import '../../../core/theme/text_config.dart';
 import '../controllers/user_products_controller.dart';
 
+
+///Temp Product Todo: Remove after impl
+ProductEntity productEntity = ProductEntity(
+  seller: 12,
+  id: 1,
+  title: "Cricket Equipment",
+  rentOption: "day",
+  categories: ["Electronics","Sports"],
+  rentPrice: "12.99",
+  purchasePrice: "299.99",
+  datePosted: DateTime.now(),
+  description: "A product description is a form of marketing copy used to describe and explain the benefits "
+      "of your product. In other words, it provides all the information and details of your product on your "
+      "ecommerce site. These product details can be one sentence, a short paragraph or bulleted. "
+      "They can be serious, funny or quirky",
+);
 
 class UserProductsView extends GetView<UserProductsController> {
   const UserProductsView({super.key});
@@ -55,17 +73,15 @@ class UserProductsView extends GetView<UserProductsController> {
             /// Todo: Implement widget based card here, Defile entity model first
             itemBuilder: (context, index) => InkWell(
               onTap: ()=>controller.goToEditProduct(),
-              child: const Card(
-                color: AppColor.primaryDefault,
-                child: SizedBox(
-                  height: 160,
-                  width: double.infinity,
-                ),
+              child: ProductCard(productEntity: productEntity),
               ),
             ),
-          )
         ],
       ),
     );
   }
+
 }
+
+
+
