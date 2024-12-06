@@ -19,8 +19,7 @@ class ProductCategorySelectController extends GetxController {
   void onInit() {
     productCreationService.setProgress(index: index);
     categoryController.addItems(productCreationService.categories.map((element) => DropdownItem<CategoryModel>(label: element.label.toString(), value: element,selected: true),).toList());
-    print(categoryController);
-    print(productCreationService.categories);
+    if(!productCreationService.categoryLoaded) productCreationService.getAllCategories();
     super.onInit();
   }
 

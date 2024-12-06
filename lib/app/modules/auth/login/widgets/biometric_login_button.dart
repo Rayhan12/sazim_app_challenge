@@ -18,7 +18,7 @@ class BiometricLoginButton extends StatelessWidget {
         children: [
 
           GestureDetector(
-            onTap: ()=> onClick,
+            onTap: ()=> onClick(),
             child: SizedBox(
               height: 130,
               width: 130,

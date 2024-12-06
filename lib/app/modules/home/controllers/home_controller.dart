@@ -5,6 +5,10 @@ import 'package:sazim_app/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
 
+  final AuthService authService;
+  HomeController({required this.authService});
+
+
   final PageController pageController = PageController(initialPage: 0);
   RxInt currentPage = 0.obs;
 
@@ -38,6 +42,11 @@ class HomeController extends GetxController {
         Get.toNamed(Routes.PRODUCT_MANAGEMENT);
       }
 
+  }
+
+  void logOutUserAndSendToLogin(){
+    ///Implementation not with the scope but setup is ready
+    Get.offAllNamed(Routes.LOGIN);
   }
 
 

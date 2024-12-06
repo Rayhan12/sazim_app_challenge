@@ -29,6 +29,20 @@ class HomeView extends GetView<HomeController> {
             }
         },)
       ),
+
+      drawer: Drawer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            ListTile(
+              leading: const Icon(RIcon.Logout,color: AppColor.textPrimary,),
+              title: Text("Logout",style: AppText().subHeadlineSemiBold,),
+              onTap: ()=> controller.logOutUserAndSendToLogin(),
+            ),
+            const SizedBox(height: 20,),
+          ],
+        ),
+      ),
       body: PageView(
         controller: controller.pageController,
         pageSnapping: true,

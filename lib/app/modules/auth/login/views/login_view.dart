@@ -68,7 +68,7 @@ class LoginView extends GetView<LoginController> {
 
                     const SizedBox(height: 20,),
 
-                    BiometricLoginButton(onClick: (){})
+                    BiometricLoginButton(onClick: ()=>controller.biometricLogInUserAndNavigateToHome(context: context))
                   ],
                 ),
               ),

@@ -48,6 +48,7 @@ class ProductCreationService extends GetxService {
         },
       );
     } catch (error) {
+      categoryLoaded = false;
       log("Error", error: error);
     }
   }

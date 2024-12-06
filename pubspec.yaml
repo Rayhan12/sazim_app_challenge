@@ -28,7 +28,7 @@ dependencies:
 
   # For Biometric auth (Biometrics and FaceID)
   local_auth: ^2.3.0
-  flutter_secure_storage: ^9.2.2
+  get_storage: ^2.1.1
 
   #For Firebase push notification
   cloud_firestore: ^5.2.1

@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:sazim_app/app/core/dependency_injection/dependency_injection.dart';
 import 'package:sazim_app/app/core/theme/color_config.dart';
+import 'package:sazim_app/app/core/utility/biometric_auth_util.dart';
 
 import 'app/routes/app_pages.dart';
 
@@ -26,6 +28,8 @@ Future<void> loadEnv() async {
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   DependencyInjection.init();
+  await GetStorage.init();
+  await BiometricAuthUtil.instance.biometricConfig();
   await loadEnv();
 
   // making the the system top bar transparent
