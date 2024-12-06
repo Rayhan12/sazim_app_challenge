@@ -31,7 +31,7 @@ class ProductCreationSummaryView extends GetView<ProductCreationSummaryControlle
               TitleInfo(title: "Title", information: controller.productCreationService.productTitle.value,),
               const SizedBox(height: 10,),
 
-              TitleInfo(title: "Categories", information: controller.productCreationService.categories.toString().replaceAll("[", "").replaceAll("]", ""),),
+              TitleInfo(title: "Categories", information: controller.productCreationService.categories.map((element) => element.label,).toList().toString().replaceAll("[", "").replaceAll("]", ""),),
               const SizedBox(height: 10,),
 
               TitleInfo(title: "Description", information: controller.productCreationService.description.value,),
@@ -65,7 +65,7 @@ class ProductCreationSummaryView extends GetView<ProductCreationSummaryControlle
           leftOnClick: () => controller.goToPreviousPage(),
           leftRoutingType: PreviousRoutingStrategy(),
           rightRoutingType: SubmitRoutingStrategy(),
-          rightOnClick: () => controller.saveDataAndSubmitForProductCreation(),
+          rightOnClick: () => controller.saveDataAndSubmitForProductCreation(context: context),
         ),
       ),
     );

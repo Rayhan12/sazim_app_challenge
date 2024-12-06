@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:multi_dropdown/multi_dropdown.dart';
 import 'package:sazim_app/app/core/services/product_creation_service.dart';
+import 'package:sazim_app/app/data/models/category_model.dart';
 
 import '../../../routes/app_pages.dart';
 
@@ -11,13 +12,13 @@ class ProductCategorySelectController extends GetxController {
   ProductCategorySelectController({required this.productCreationService});
   int index = 2;
 
-  final categoryController = MultiSelectController<String>();
+  final categoryController = MultiSelectController<CategoryModel>();
   final formKey = GlobalKey<FormState>(debugLabel: "Category Form");
 
   @override
   void onInit() {
     productCreationService.setProgress(index: index);
-    categoryController.addItems(productCreationService.categories.map((element) => DropdownItem<String>(label: element, value: element,selected: true),).toList());
+    categoryController.addItems(productCreationService.categories.map((element) => DropdownItem<CategoryModel>(label: element.label.toString(), value: element,selected: true),).toList());
     print(categoryController);
     print(productCreationService.categories);
     super.onInit();
@@ -40,7 +41,8 @@ class ProductCategorySelectController extends GetxController {
     if(formKey.currentState!.validate())
     {
       productCreationService.setProgress(index: index+1);
-      productCreationService.updateProductCategory(categories: categoryController.selectedItems.map((e) => e.value,).toList());
+      //Convert to dynamic value
+      productCreationService.updateProductCategory(categories: categoryController.selectedItems.map((e) => e.value).toList());
       Get.toNamed(Routes.PRODUCT_DESCRIPTION_ENTER);
     }
   }
@@ -48,6 +50,14 @@ class ProductCategorySelectController extends GetxController {
   void goToPreviousPage(){
     productCreationService.setProgress(index: index-1);
     Get.back();
+  }
+
+  List<CategoryModel> getCategories(){
+    if(productCreationService.categoryLoaded)
+      {
+        return productCreationService.listCategories;
+      }
+    return [];
   }
 
 

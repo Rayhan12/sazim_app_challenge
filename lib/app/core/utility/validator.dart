@@ -38,8 +38,8 @@ class Validator{
   String? validateName(String? value) {
     if (value!.isEmpty) {
       return "Please enter name";
-    } else if (RegExp(r'[!@#<>?":_`~;[\]\\|=+)(*&^%0-9-]').hasMatch(value)) {
-      return "only alphabets allowed";
+    } else if (value.length < 4){
+      return "Name to short";
     }
     return null;
   }

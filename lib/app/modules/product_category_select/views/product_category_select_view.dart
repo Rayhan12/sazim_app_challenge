@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:multi_dropdown/multi_dropdown.dart';
 import 'package:r_icon_pro/r_icon_pro.dart';
 import 'package:sazim_app/app/core/widgets/input_widgets/multi_select_drop_down.dart';
+import 'package:sazim_app/app/data/models/category_model.dart';
 import '../../../core/widgets/buttons/routing_button.dart';
 import '../../../core/widgets/product_creation_progress_indicator.dart';
 import '../../../core/widgets/routing_navigation_indicator.dart';
@@ -32,7 +34,9 @@ class ProductCategorySelectView
                 errorMessage: "Select at lets one category",
                 fieldTitle: "Select Categories",
                 needTitle: true,
-                items: ["Test 1" , "Test 2", "Test 3", "Test 4"],
+                itemBuilder: controller.getCategories().map((e) {
+                  return DropdownItem<CategoryModel>(label: e.label.toString(), value: e);
+                },).toList(),
                 needValidation: true,
                 prefixIcon: RIcon.Box_Minimalistic,
               ),

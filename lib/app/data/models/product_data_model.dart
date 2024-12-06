@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:sazim_app/app/domain/entities/product_entity.dart';
+
 List<ProductDataModel> productDataModelFromJson(String str) => List<ProductDataModel>.from(json.decode(str).map((x) => ProductDataModel.fromJson(x)));
 
 String productDataModelToJson(List<ProductDataModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -58,4 +60,34 @@ class ProductDataModel {
     "rent_option": rentOption,
     "date_posted": datePosted?.toIso8601String(),
   };
+
+  ProductEntity toProductEntity(){
+    return ProductEntity(
+      id: id ,
+      title: title,
+      categories: categories,
+      datePosted: datePosted,
+      description: description,
+      productImage: productImage,
+      purchasePrice: purchasePrice,
+      rentOption: rentOption,
+      rentPrice: rentPrice,
+      seller: seller,
+    );
+  }
+
+  factory ProductDataModel.fromEntity({required ProductEntity productEntity}){
+    return ProductDataModel(
+      id: productEntity.id,
+      title: productEntity.title,
+      seller: productEntity.seller,
+      rentPrice: productEntity.rentPrice,
+      rentOption: productEntity.rentOption,
+      purchasePrice: productEntity.purchasePrice,
+      productImage: productEntity.productImage,
+      description: productEntity.description,
+      datePosted: productEntity.datePosted,
+      categories: productEntity.categories,
+    );
+  }
 }

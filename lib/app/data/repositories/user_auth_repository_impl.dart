@@ -10,6 +10,7 @@ import 'package:sazim_app/app/domain/repositories/user_auth_repository.dart';
 class UserAuthRepositoryImpl implements UserAuthRepository {
   @override
   Future<UserDataModel?> userLogin({required UserLoginModel userLoginModel}) async {
+    UserDataModel userDataModel = UserDataModel();
     try {
       await BaseClient.safeApiCall(
         ApiUrls.login,
@@ -19,7 +20,8 @@ class UserAuthRepositoryImpl implements UserAuthRepository {
           if (response.statusCode != 200) {
             throw Exception(response.data['error']);
           } else {
-            return UserDataModel.fromJson(response.data);
+
+            userDataModel = UserDataModel.fromJson(response.data['user']);
           }
         },
       );
@@ -27,11 +29,12 @@ class UserAuthRepositoryImpl implements UserAuthRepository {
       log(error.toString());
       throw Exception(error.toString());
     }
-    return null;
+    return userDataModel;
   }
 
   @override
   Future<UserDataModel?> userRegister({required UserRegisterModel userRegisterModel}) async {
+    UserDataModel userDataModel = UserDataModel();
     try {
       await BaseClient.safeApiCall(
         ApiUrls.register,
@@ -44,7 +47,7 @@ class UserAuthRepositoryImpl implements UserAuthRepository {
             }
           else
             {
-              return UserDataModel.fromJson(response.data);
+              userDataModel = UserDataModel.fromJson(response.data);
             }
         },
       );
@@ -52,7 +55,7 @@ class UserAuthRepositoryImpl implements UserAuthRepository {
       log(error.toString());
       throw Exception(error.toString());
     }
-    return null;
+    return userDataModel;
   }
 
   @override

@@ -54,16 +54,16 @@ class SignUpController extends GetxController {
         Loader.show(context,progressIndicator: const Loading());
         UserRegisterModel userRegisterModel = UserRegisterModel(
           address: addressController.text,
-          email: emailController.text,
+          email: emailController.text.trim().toLowerCase(),
           firebaseConsoleManagerToken: "Will implement",
           firstName: firstNameController.text,
           lastName: lastNameController.text,
-          password: passwordController.text,
+          password: passwordController.text.trim(),
         );
 
         authService.registerUser(userRegisterModel: userRegisterModel).then((value) {
           Loader.hide();
-          // Get.offAndToNamed(Routes.HOME);
+          Get.offAndToNamed(Routes.HOME);
         });
 
       }

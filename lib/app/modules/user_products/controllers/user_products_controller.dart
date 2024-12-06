@@ -1,8 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sazim_app/app/core/services/auth_service.dart';
+import 'package:sazim_app/app/domain/repositories/product_management_repository.dart';
 import 'package:sazim_app/app/routes/app_pages.dart';
 
 class UserProductsController extends GetxController {
+
+  final AuthService authService;
+  final ProductManagementRepository productManagementRepository;
+  UserProductsController({required this.authService, required this.productManagementRepository});
 
   final ScrollController scrollController = ScrollController();
   final sliverAppBar = GlobalKey();
@@ -21,6 +27,10 @@ class UserProductsController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  String getFirstName (){
+    return authService.userDataModel!.firstName ?? "";
   }
 
   void goToEditProduct() => Get.toNamed(Routes.EDIT_PRODUCT);

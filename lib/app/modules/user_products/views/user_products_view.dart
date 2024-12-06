@@ -45,7 +45,7 @@ class UserProductsView extends GetView<UserProductsController> {
 
                   return FlexibleSpaceBar(
                     expandedTitleScale: 1.3,
-                    background: const TitleContent(title: "WELCOME @User Name", content: "How are you doing today!"),
+                    background: TitleContent(title: "Welcome, ${controller.getFirstName()}", content: "How are you doing today!"),
                     centerTitle: false,
                     collapseMode: CollapseMode.parallax,
                     titlePadding: EdgeInsets.zero,

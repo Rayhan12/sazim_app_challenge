@@ -45,6 +45,7 @@ dependencies:
 
   #For api calling
   dio: ^5.7.0
+  http: ^1.2.1
 
 
   #For viewing api response logs

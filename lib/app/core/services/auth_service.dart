@@ -6,16 +6,21 @@ import 'package:sazim_app/app/data/repositories/user_auth_repository_impl.dart';
 
 import '../../data/dto_model/user_login_model.dart';
 import '../../data/dto_model/user_register_model.dart';
+import '../../domain/repositories/user_auth_repository.dart';
 
 class AuthService extends GetxService{
-  final UserAuthRepositoryImpl userAuthRepositoryImpl;
-  AuthService({required this.userAuthRepositoryImpl});
+  final UserAuthRepository userAuthRepository;
+  AuthService({required this.userAuthRepository});
 
   UserDataModel? userDataModel = UserDataModel();
 
   Future<void> loginUser({required UserLoginModel userLoginModel}) async{
     try{
-      userDataModel = await userAuthRepositoryImpl.userLogin(userLoginModel: userLoginModel);
+      await userAuthRepository.userLogin(userLoginModel: userLoginModel).then((value) {
+        print(value);
+        userDataModel = value ?? UserDataModel();
+      },);
+      print(userDataModel);
     }
     catch(error)
     {
@@ -25,7 +30,7 @@ class AuthService extends GetxService{
 
   Future<void> registerUser({required UserRegisterModel userRegisterModel}) async{
     try{
-      userDataModel = await userAuthRepositoryImpl.userRegister(userRegisterModel: userRegisterModel);
+      userDataModel = await userAuthRepository.userRegister(userRegisterModel: userRegisterModel);
     }
     catch(error)
     {

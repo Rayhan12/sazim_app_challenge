@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:r_icon_pro/r_icon_pro.dart';
+import 'package:sazim_app/app/core/constant/constant_config.dart';
 import 'package:sazim_app/app/core/theme/color_config.dart';
 import 'package:sazim_app/app/core/theme/text_config.dart';
 import 'package:sazim_app/app/core/widgets/input_widgets/drop-down_input_field.dart';
@@ -79,7 +80,7 @@ class ProductPricingSetupView extends GetView<ProductPricingSetupController> {
                   errorMessage: "Please select a rent type",
                   fieldTitle: "Rent Type",
                   prefixIcon: RIcon.Clock_Square,
-                  items: ["Hourly", "Day", "Monthly"],
+                  items: rentTypeChoice,
                 ),
               ],
             ),

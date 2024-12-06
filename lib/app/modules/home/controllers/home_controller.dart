@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:sazim_app/app/core/services/auth_service.dart';
 import 'package:sazim_app/app/routes/app_pages.dart';
 
 class HomeController extends GetxController {
@@ -10,6 +11,7 @@ class HomeController extends GetxController {
 
   @override
   void onInit() {
+
     pageController.addListener(() {
       currentPage.value = pageController.page!.toInt();
     });

@@ -50,4 +50,9 @@ class UserDataModel {
     "password": password,
     "date_joined": dateJoined?.toIso8601String(),
   };
+
+  @override
+  String toString() {
+    return 'UserDataModel{id: $id, email: $email, firstName: $firstName, lastName: $lastName, address: $address, firebaseConsoleManagerToken: $firebaseConsoleManagerToken, password: $password, dateJoined: $dateJoined}';
+  }
 }

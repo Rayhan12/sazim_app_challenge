@@ -7,8 +7,9 @@ import '../../constant/constant_config.dart';
 import '../../theme/color_config.dart';
 import '../../theme/text_config.dart';
 
-class MultiSelectDropDownInputField extends StatefulWidget {
-  final MultiSelectController<String> controller;
+
+class MultiSelectDropDownInputField<T extends Object> extends StatefulWidget {
+  final MultiSelectController<T> controller;
   final String fieldTitle;
   final String hintText;
   final bool needValidation;
@@ -22,25 +23,47 @@ class MultiSelectDropDownInputField extends StatefulWidget {
   final TextStyle? titleStyle;
   final bool? needSearch;
   final bool? viewOnly;
-  final String? initialValue;
-  final List<String>? items;
-  final List<DropdownItem<String>>? itemBuilder;
-  final Function? onValueChange;
-  final Key? itemkey;
+  final T? initialValue;
+  final List<T>? items;
+  final List<DropdownItem<T>>? itemBuilder;
+  final Function(List<T>)? onValueChange;
+  final Key? itemKey;
   final Widget? prefixWidget;
   final IconData? prefixIcon;
 
-  ///Common Error factor
-  /// 1=> If item list contains duplicate values
-
-  const MultiSelectDropDownInputField({super.key, required this.controller, required this.hintText, required this.needValidation, required this.errorMessage, this.textInputAction, this.suffixText, this.backgroundColor, required this.fieldTitle, this.needTitle, this.items, this.setInitialValue, this.itemkey, this.onValueChange, this.itemBuilder, this.needSearch, this.viewOnly, this.titleStyle, this.initialValue, this.borderRadius, this.prefixWidget, this.prefixIcon});
+  const MultiSelectDropDownInputField({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    required this.needValidation,
+    required this.errorMessage,
+    this.textInputAction,
+    this.suffixText,
+    this.backgroundColor,
+    required this.fieldTitle,
+    this.needTitle,
+    this.items,
+    this.setInitialValue,
+    this.itemKey,
+    this.onValueChange,
+    this.itemBuilder,
+    this.needSearch,
+    this.viewOnly,
+    this.titleStyle,
+    this.initialValue,
+    this.borderRadius,
+    this.prefixWidget,
+    this.prefixIcon,
+  });
 
   @override
-  State<MultiSelectDropDownInputField> createState() => _MultiSelectDropDownInputFieldState();
+  State<MultiSelectDropDownInputField<T>> createState() =>
+      _MultiSelectDropDownInputFieldState<T>();
 }
 
-class _MultiSelectDropDownInputFieldState extends State<MultiSelectDropDownInputField> {
-  List<DropdownItem<String>> activeItemList = [];
+class _MultiSelectDropDownInputFieldState<T extends Object>
+    extends State<MultiSelectDropDownInputField<T>> {
+  List<DropdownItem<T>> activeItemList = [];
   bool isMenuOpen = false;
 
   @override
@@ -49,9 +72,9 @@ class _MultiSelectDropDownInputFieldState extends State<MultiSelectDropDownInput
       try {
         if (widget.items != null && widget.itemBuilder == null) {
           activeItemList = widget.items!
-              .map((e) => DropdownItem<String>(
-                    value: e.toString(),
-                    label: e,
+              .map((e) => DropdownItem<T>(
+                    value: e,
+                    label: e.toString(),
                   ))
               .toList();
         } else if ((widget.items == null && widget.itemBuilder != null)) {
@@ -75,7 +98,7 @@ class _MultiSelectDropDownInputFieldState extends State<MultiSelectDropDownInput
   Widget build(BuildContext context) {
     return Column(
       children: [
-        MultiDropdown<String>(
+        MultiDropdown<T>(
           controller: widget.controller,
           enabled: true,
           searchEnabled: true,
@@ -89,15 +112,15 @@ class _MultiSelectDropDownInputFieldState extends State<MultiSelectDropDownInput
           items: widget.items != null
               ? activeItemList = widget.items!
                   .map(
-                    (e) => DropdownItem<String>(
-                      label: e,
+                    (e) => DropdownItem<T>(
+                      label: e.toString(),
                       value: e,
                       selected:widget.controller.selectedItems.isNotEmpty?  widget.controller.selectedItems.map((e) => e.value,).contains(e): false
                     ),
                   ).toList()
               : widget.itemBuilder != null || widget.itemBuilder!.isEmpty
                   ? widget.itemBuilder!
-                  : <DropdownItem<String>>[],
+                  : <DropdownItem<T>>[],
           fieldDecoration: FieldDecoration(
             hintText: widget.hintText,
             hintStyle: AppText().body.copyWith(color: AppColor.textTertiary),
@@ -132,3 +155,5 @@ class _MultiSelectDropDownInputFieldState extends State<MultiSelectDropDownInput
     );
   }
 }
+
+
