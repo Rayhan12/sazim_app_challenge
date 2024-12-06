@@ -59,7 +59,7 @@ class AuthService extends GetxService{
     try{
       if(storageService.hasBiometricEnabled())
         {
-          await authUtil.isBiometricAuthComplete().then((value) async{
+          await authUtil.isBiometricAuthComplete().then((value) {
             if(value)
               {
                 hasBiometricEnabled.value = true;
@@ -67,7 +67,7 @@ class AuthService extends GetxService{
                     email: storageService.getEmail(),
                     password: storageService.getPassword()
                 );
-                await loginUser(userLoginModel: userLoginModel).then((value) {
+                loginUser(userLoginModel: userLoginModel).then((value) {
                   return true;
                 },);
               }
@@ -91,6 +91,10 @@ class AuthService extends GetxService{
   }
 
   bool getBiometricEnabledStatus()=> storageService.hasBiometricEnabled();
+
+  void logOut(){
+    userDataModel = UserDataModel();
+  }
 
 
 

@@ -46,6 +46,7 @@ class HomeController extends GetxController {
 
   void logOutUserAndSendToLogin(){
     ///Implementation not with the scope but setup is ready
+    authService.logOut();
     Get.offAllNamed(Routes.LOGIN);
   }
 

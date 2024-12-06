@@ -52,7 +52,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
 
   #For basic loading animation & waiting for post api call
-  shimmer: ^3.0.0
+  skeletonizer: ^1.4.2
   loading_animation_widget: ^1.2.0+2
   flutter_overlay_loader: ^2.0.0
 

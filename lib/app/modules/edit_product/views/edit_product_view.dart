@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:multi_dropdown/multi_dropdown.dart';
 import 'package:r_icon_pro/r_icon_pro.dart';
+import 'package:sazim_app/app/core/constant/constant_config.dart';
 import 'package:sazim_app/app/core/widgets/buttons/rounded_action_buttons.dart';
+import 'package:sazim_app/app/data/models/category_model.dart';
 
 import '../../../core/theme/color_config.dart';
 import '../../../core/theme/text_config.dart';
@@ -49,13 +52,15 @@ class EditProductView extends GetView<EditProductController> {
                 const SizedBox(
                   height: 10,
                 ),
-                MultiSelectDropDownInputField(
+                MultiSelectDropDownInputField<CategoryModel>(
                   controller: controller.categoryController,
                   hintText: "Select Categories",
                   errorMessage: "Select at lets one category",
                   fieldTitle: "Select Categories",
                   needTitle: true,
-                  items: ["Test 1", "Test 2", "Test 3", "Test 4"],
+                  itemBuilder: controller.allCategories.map((e) {
+                    return DropdownItem<CategoryModel>(label: e.label.toString(), value: e , selected: controller.selectedItems.contains(e));
+                  },).toList(),
                   needValidation: true,
                   prefixIcon: RIcon.Box_Minimalistic,
                 ),
@@ -120,7 +125,7 @@ class EditProductView extends GetView<EditProductController> {
                   errorMessage: "Please select a rent type",
                   fieldTitle: "Rent Type",
                   prefixIcon: RIcon.Clock_Square,
-                  items: ["Hourly", "Day", "Monthly"],
+                  items: rentTypeChoice,
                 ),
                 const SizedBox(
                   height: 25,

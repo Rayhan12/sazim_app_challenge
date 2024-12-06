@@ -22,6 +22,7 @@ class ProductCreationSummaryController extends GetxController {
 
   @override
   void onClose() {
+    Loader.hide();
     super.onClose();
   }
 

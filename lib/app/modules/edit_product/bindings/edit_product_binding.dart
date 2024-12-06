@@ -6,7 +6,7 @@ class EditProductBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<EditProductController>(
-      () => EditProductController(productManagementRepositoryImpl: Get.find()),
+      () => EditProductController(productManagementRepositoryImpl: Get.find() , productCreationService: Get.find()),
     );
   }
 }

@@ -26,4 +26,10 @@ class CategoryModel {
     "value": value,
     "label": label,
   };
+
+  @override
+  bool operator ==(Object other) => identical(this, other) || other is CategoryModel && runtimeType == other.runtimeType && value == other.value && label == other.label;
+
+  @override
+  int get hashCode => value.hashCode ^ label.hashCode;
 }

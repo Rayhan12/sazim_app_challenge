@@ -4,6 +4,7 @@ class ProductEntity{
   String? title;
   String? description;
   List<String>? categories;
+  List<String>? categoriesValues;
   String? productImage;
   String? purchasePrice;
   String? rentPrice;
@@ -16,6 +17,7 @@ class ProductEntity{
     this.title,
     this.description,
     this.categories,
+    this.categoriesValues,
     this.productImage,
     this.purchasePrice,
     this.rentPrice,
@@ -23,8 +25,13 @@ class ProductEntity{
     this.datePosted,
 });
 
+
+  void updateCategory({required List<String> categoriesValues}){
+    this.categoriesValues = List.from(categoriesValues);
+  }
+
   @override
   String toString() {
-    return 'ProductEntity{id: $id, seller: $seller, title: $title, description: $description, categories: $categories, productImage: $productImage, purchasePrice: $purchasePrice, rentPrice: $rentPrice, rentOption: $rentOption, datePosted: $datePosted}';
+    return 'ProductEntity{id: $id, seller: $seller, title: $title, description: $description, categories: $categories, categoriesValues: $categoriesValues, productImage: $productImage, purchasePrice: $purchasePrice, rentPrice: $rentPrice, rentOption: $rentOption, datePosted: $datePosted}';
   }
 }

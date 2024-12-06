@@ -17,6 +17,7 @@ enum RequestType {
   post,
   put,
   delete,
+  patch,
 }
 
 class BaseClient {
@@ -80,6 +81,17 @@ class BaseClient {
           queryParameters: queryParameters,
           options: Options(headers: headers),
         );
+
+      }else if (requestType == RequestType.patch) {
+        response = await _dio.patch(
+          url,
+          data: data,
+          onReceiveProgress: onReceiveProgress,
+          onSendProgress: onSendProgress,
+          queryParameters: queryParameters,
+          options: Options(headers: headers),
+        );
+
       } else {
         response = await _dio.delete(
           url,

@@ -58,7 +58,7 @@ class _ProductCardState extends State<ProductCard> with TickerProviderStateMixin
               ),
               RowText(
                 title: "Categories",
-                content: widget.productEntity.categories!
+                content: widget.productEntity.categoriesValues!
                     .map(
                       (e) => e,
                     )

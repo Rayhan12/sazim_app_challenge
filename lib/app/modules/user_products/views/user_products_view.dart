@@ -1,30 +1,16 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:sazim_app/app/core/constant/constant_config.dart';
 import 'package:sazim_app/app/core/widgets/cards/product_card.dart';
 import 'package:sazim_app/app/core/widgets/title_content.dart';
 import 'package:sazim_app/app/domain/entities/product_entity.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../core/theme/color_config.dart';
 import '../../../core/theme/text_config.dart';
 import '../controllers/user_products_controller.dart';
 
-
-///Temp Product Todo: Remove after impl
-ProductEntity productEntity = ProductEntity(
-  seller: 12,
-  id: 1,
-  title: "Cricket Equipment",
-  rentOption: "day",
-  categories: ["Electronics","Sports"],
-  rentPrice: "12.99",
-  purchasePrice: "299.99",
-  datePosted: DateTime.now(),
-  description: "A product description is a form of marketing copy used to describe and explain the benefits "
-      "of your product. In other words, it provides all the information and details of your product on your "
-      "ecommerce site. These product details can be one sentence, a short paragraph or bulleted. "
-      "They can be serious, funny or quirky",
-);
 
 class UserProductsView extends GetView<UserProductsController> {
   const UserProductsView({super.key});
@@ -67,15 +53,22 @@ class UserProductsView extends GetView<UserProductsController> {
             backgroundColor: Colors.transparent,
 
           ),
-          SliverList.builder(
-            itemCount: 12,
-            // padding: const EdgeInsets.symmetric(vertical: 10),
-            /// Todo: Implement widget based card here, Defile entity model first
-            itemBuilder: (context, index) => InkWell(
-              onTap: ()=>controller.goToEditProduct(),
-              child: ProductCard(productEntity: productEntity),
-              ),
-            ),
+          Obx(() {
+              return !controller.productManagementService.loading.value? SliverList.builder(
+                itemCount: controller.productManagementService.loading.value? 3 : controller.productManagementService.allProductsOfCurrentUser.length,
+                itemBuilder: (context, index) => InkWell(
+                  onTap: ()=>controller.goToEditProduct(productEntity: controller.productManagementService.allProductsOfCurrentUser[index]),
+                  child: Skeletonizer(
+                    enabled: controller.productManagementService.loading.value,
+                      child: ProductCard(productEntity: controller.productManagementService.allProductsOfCurrentUser[index])
+                  ),
+                  ),
+                ) : SliverList.builder(
+                itemCount: 3,
+                itemBuilder: (context,index) => Skeletonizer(child: ProductCard(productEntity: blankEntity)),
+              );
+            }
+          ),
         ],
       ),
     );

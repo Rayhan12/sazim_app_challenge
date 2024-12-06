@@ -9,6 +9,7 @@ import 'package:sazim_app/app/modules/home/controllers/home_controller.dart';
 import 'package:sazim_app/app/modules/user_products/controllers/user_products_controller.dart';
 
 import '../../data/data_source/local_data_source/storage_service/storage_service_impl.dart';
+import '../services/product_management_service.dart';
 
 class DependencyInjection{
   static void init(){
@@ -22,11 +23,13 @@ class DependencyInjection{
     /// Register Services
     Get.put<AuthService>(AuthService(userAuthRepository: Get.find<UserAuthRepositoryImpl>(), storageService: Get.find<StorageServiceImpl>()),permanent: true);
     Get.put<ProductCreationService>(ProductCreationService(authService: Get.find<AuthService>(),categoryRepository: Get.find<CategoryRepositoryImpl>(), productManagementRepository: Get.find<ProductManagementRepositoryImpl>()),permanent: true);
-
+    Get.put<ProductManagementService>(ProductManagementService(authService: Get.find<AuthService>() , productManagementRepository: Get.find<ProductManagementRepositoryImpl>(), categoryRepository: Get.find<CategoryRepositoryImpl>()));
 
     /// Register Controllers
     Get.put<HomeController>(HomeController(authService: Get.find<AuthService>()),permanent: true);
-    Get.put<UserProductsController>(UserProductsController(authService: Get.find<AuthService>(),productManagementRepository: Get.find<ProductManagementRepositoryImpl>()), permanent: true);
+    Get.lazyPut<UserProductsController>(
+          () => UserProductsController(authService: Get.find<AuthService>() ,productManagementService: Get.find<ProductManagementService>()),
+    );
 
   }
 }

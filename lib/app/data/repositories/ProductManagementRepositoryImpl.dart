@@ -80,7 +80,10 @@ class ProductManagementRepositoryImpl implements ProductManagementRepository{
           }
           else
           {
-            allProducts = productDataModelFromJson(response.data).map((e) => e.toProductEntity(),).toList();
+            // allProducts = productDataModelFromJson(response.data).map((e) => e.toProductEntity(),).toList();
+
+            /// Todo: Need to handle large computation here
+            allProducts = List.from(response.data).map((e) => ProductDataModel.fromJson(e).toProductEntity(),).toList();
           }
         },
       );
@@ -120,11 +123,15 @@ class ProductManagementRepositoryImpl implements ProductManagementRepository{
   @override
   Future<ProductEntity> updateProduct(ProductEntity product) async{
     ProductEntity productEntity = ProductEntity();
+
     try {
+      Map<String,dynamic> data = ProductDataModel.fromEntity(productEntity: product).toJson();
+      data.remove("product_image");
+
       await BaseClient.safeApiCall(
-        ApiUrls.products,
-        RequestType.put,
-        data: ProductDataModel.fromEntity(productEntity: product).toJson(),
+        "${ApiUrls.products}${product.id}/",
+        RequestType.patch,
+        data: dio_instance.FormData.fromMap(data),
         onSuccess: (response){
           if(response.statusCode != 200)
           {
