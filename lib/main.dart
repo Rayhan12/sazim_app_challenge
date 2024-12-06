@@ -29,7 +29,8 @@ Future<void> loadEnv() async {
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  FirebaseApp
+  await Firebase.initializeApp();
+  
   DependencyInjection.init();
   await GetStorage.init();
   await BiometricAuthUtil.instance.biometricConfig();

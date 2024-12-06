@@ -1,9 +1,23 @@
-allprojects {
+//allprojects {
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}
+
+buildscript {
+    ext.kotlin_version = '2.0.20'
     repositories {
         google()
         mavenCentral()
     }
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.4.2" // Update this to the latest stable version
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.gms:google-services:4.4.2" // Keep or update this if necessary
+    }
 }
+
 
 rootProject.buildDir = "../build"
 subprojects {

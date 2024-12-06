@@ -1,4 +1,4 @@
-package com.teebay.appname.sazim_app
+package com.teebay.appname
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 //import io.flutter.embedding.android.FlutterActivity
