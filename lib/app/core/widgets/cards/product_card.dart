@@ -2,7 +2,9 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
+import 'package:r_icon_pro/r_icon_pro.dart';
 import 'package:sazim_app/app/core/theme/color_config.dart';
 import 'package:sazim_app/app/core/theme/text_config.dart';
 import 'package:sazim_app/app/domain/entities/product_entity.dart';
@@ -11,8 +13,9 @@ import '../row_text.dart';
 
 class ProductCard extends StatefulWidget {
   final ProductEntity productEntity;
+  final Function? onDelete;
 
-  const ProductCard({super.key, required this.productEntity});
+  const ProductCard({super.key, required this.productEntity, this.onDelete});
 
   @override
   State<ProductCard> createState() => _ProductCardState();
@@ -27,15 +30,14 @@ class _ProductCardState extends State<ProductCard> with TickerProviderStateMixin
   void animation() {
     if (!hasAnimatedToFullText) {
       maxLines = 2000;
-      timer = Timer(const Duration(seconds: 10), ()=>animation());
+      timer = Timer(const Duration(seconds: 10), () => animation());
     } else {
       maxLines = 2;
     }
-    setState(() {hasAnimatedToFullText = !hasAnimatedToFullText;});
-
+    setState(() {
+      hasAnimatedToFullText = !hasAnimatedToFullText;
+    });
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +51,24 @@ class _ProductCardState extends State<ProductCard> with TickerProviderStateMixin
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                widget.productEntity.title.toString(),
-                style: AppText().headLine,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Text(
+                      widget.productEntity.title.toString(),
+                      style: AppText().headLine,
+                    ),
+                  ),
+                  if(widget.onDelete != null)
+                  IconButton(
+                    onPressed: (){
+                      widget.onDelete!();
+                      setState(() {});
+                    },
+                    icon: const Icon(RIcon.Trash_Bin_Minimalistic),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 5,
@@ -79,20 +96,19 @@ class _ProductCardState extends State<ProductCard> with TickerProviderStateMixin
                     style: AppText().subHeadline.copyWith(color: AppColor.textPrimary),
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
-                    maxLines: hasAnimatedToFullText? 20: 2,
+                    maxLines: hasAnimatedToFullText ? 20 : 2,
                   ),
                   InkWell(
-                    onTap: (){
-                      if(!hasAnimatedToFullText){
+                    onTap: () {
+                      if (!hasAnimatedToFullText) {
                         animation();
-                      }
-                      else{
+                      } else {
                         timer.cancel();
                         animation();
                       }
                     },
                     child: Text(
-                      hasAnimatedToFullText? "Show less .." : "...More Details",
+                      hasAnimatedToFullText ? "Show less .." : "...More Details",
                       style: AppText().footnoteBold.copyWith(color: AppColor.primaryDefault),
                     ),
                   )

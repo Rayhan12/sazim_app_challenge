@@ -246,14 +246,28 @@ class BaseClient {
     // check if the error is 401 (Unauthorized Request)
     if (error.response?.statusCode == 401) {
       var exception = ApiException(
-        message: Strings.unauthorised,
+        message: error.response?.data['error'],
         url: url,
         statusCode: 401,
       );
 
-      // Get.offAll(() => const LoginPage());
+
+      if (onError != null) {
+        return onError(exception);
+      } else {
+        return handleApiError(exception);
+      }
+    }
 
 
+    // check if the error is 400 (Bad Request)
+    if (error.response?.statusCode == 400) {
+      var exception = ApiException(
+        // Handling this custom format of error
+        message: error.response!.data.toString().replaceAll(RegExp(r'[\{\}\[\]\(\)]'),""),
+        url: url,
+        statusCode: 400,
+      );
       if (onError != null) {
         return onError(exception);
       } else {

@@ -45,9 +45,8 @@ class ProductManagementRepositoryImpl implements ProductManagementRepository{
   Future<void> deleteProduct(String id) async{
     try {
       await BaseClient.safeApiCall(
-        ApiUrls.products,
+        "${ApiUrls.products}$id/",
         RequestType.delete,
-        queryParameters: {'id':id},
         onSuccess: (response){
           if(response.statusCode != 204)
           {
@@ -99,9 +98,8 @@ class ProductManagementRepositoryImpl implements ProductManagementRepository{
     ProductEntity productEntity = ProductEntity();
     try {
       await BaseClient.safeApiCall(
-        ApiUrls.products,
+        "${ApiUrls.products}$id/",
         RequestType.get,
-        queryParameters: {'id':id},
         onSuccess: (response){
           if(response.statusCode != 200)
           {

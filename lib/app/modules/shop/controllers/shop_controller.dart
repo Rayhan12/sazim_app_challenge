@@ -1,11 +1,21 @@
 import 'package:get/get.dart';
 
-class ShopController extends GetxController {
-  //TODO: Implement ShopController
+import '../../../core/services/auth_service.dart';
+import '../../../core/services/product_management_service.dart';
+import '../../../domain/entities/product_entity.dart';
+import '../../../routes/app_pages.dart';
 
-  final count = 0.obs;
+class ShopController extends GetxController {
+  final AuthService authService;
+  final ProductManagementService productManagementService;
+  ShopController({required this.authService , required this.productManagementService});
+
   @override
   void onInit() {
+    if(productManagementService.allProductsInShop.isEmpty)
+      {
+        productManagementService.getAllUserProducts();
+      }
     super.onInit();
   }
 
@@ -19,5 +29,6 @@ class ShopController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
+  void goToRentOrBuyProduct({required ProductEntity productEntity}) => Get.toNamed(Routes.EDIT_PRODUCT,arguments: productEntity);
+
 }

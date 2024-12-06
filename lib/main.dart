@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:sazim_app/app/core/dependency_injection/dependency_injection.dart';
 import 'package:sazim_app/app/core/theme/color_config.dart';
 import 'package:sazim_app/app/core/utility/biometric_auth_util.dart';
+import 'package:sazim_app/app/core/utility/firebase_message_util.dart';
 
 import 'app/routes/app_pages.dart';
 
@@ -25,16 +27,24 @@ Future<void> loadEnv() async {
   }
 }
 
+Future<void> _backgroundHandler(RemoteMessage message) async {
+  await FCMUtil.instance.handleBackgroundNotification(message);
+}
+
+
 
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  
+
+
+  FirebaseMessaging.onBackgroundMessage(_backgroundHandler);
   DependencyInjection.init();
   await GetStorage.init();
   await BiometricAuthUtil.instance.biometricConfig();
   await loadEnv();
+
 
   // making the the system top bar transparent
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);

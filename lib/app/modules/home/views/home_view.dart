@@ -46,11 +46,10 @@ class HomeView extends GetView<HomeController> {
       body: PageView(
         controller: controller.pageController,
         pageSnapping: true,
+        physics: const NeverScrollableScrollPhysics(),
         allowImplicitScrolling: false,
-        /// Todo: Fix scrolling delay
         children:  const [
           UserProductsView(),
-          // ProductManagementView(),
           ShopView(),
           HistoryView()
         ],

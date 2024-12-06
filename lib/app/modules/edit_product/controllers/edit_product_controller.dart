@@ -5,15 +5,15 @@ import 'package:multi_dropdown/multi_dropdown.dart';
 import 'package:sazim_app/app/core/services/product_creation_service.dart';
 import 'package:sazim_app/app/core/widgets/loading.dart';
 import 'package:sazim_app/app/data/models/category_model.dart';
-import 'package:sazim_app/app/data/repositories/ProductManagementRepositoryImpl.dart';
 import 'package:sazim_app/app/domain/entities/product_entity.dart';
+
+import '../../../core/services/product_management_service.dart';
 
 class EditProductController extends GetxController {
 
   late ProductEntity productEntity;
-  final ProductCreationService productCreationService;
-  final ProductManagementRepositoryImpl productManagementRepositoryImpl;
-  EditProductController({required this.productManagementRepositoryImpl, required this.productCreationService});
+  final ProductManagementService productManagementService;
+  EditProductController({required this.productManagementService});
 
   final formKey = GlobalKey<FormState>();
   final titleController = TextEditingController();
@@ -62,9 +62,9 @@ class EditProductController extends GetxController {
 
 
   List<CategoryModel> getCategories(){
-    if(productCreationService.categoryLoaded)
+    if(productManagementService.categoryLoaded)
     {
-      allCategories = productCreationService.listCategories;
+      allCategories = productManagementService.listCategories;
       return allCategories;
     }
     return [];
@@ -84,7 +84,7 @@ class EditProductController extends GetxController {
           id: this.productEntity.id,
           seller: this.productEntity.seller,
         );
-        await productManagementRepositoryImpl.updateProduct(productEntity).then((value) {
+        await productManagementService.updateProduct(productEntity: productEntity).then((value) {
           Loader.hide();
           Get.back();
         },);

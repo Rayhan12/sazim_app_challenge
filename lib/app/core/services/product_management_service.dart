@@ -16,7 +16,7 @@ class ProductManagementService extends GetxService {
 
   ProductManagementService({required this.authService, required this.productManagementRepository, required this.categoryRepository});
 
-  List<ProductEntity> allProducts = [];
+  List<ProductEntity> allProducts = <ProductEntity>[].obs;
   List<ProductEntity> allProductsInShop = <ProductEntity>[].obs;
   List<ProductEntity> allProductsOfCurrentUser = <ProductEntity>[].obs;
   List<CategoryModel> listCategories = [];
@@ -49,6 +49,9 @@ class ProductManagementService extends GetxService {
   Future<void> getAllUserProducts() async {
     loading.value = true;
     try {
+      allProducts.clear();
+      allProductsInShop.clear();
+      allProductsOfCurrentUser.clear();
       await productManagementRepository.getAllProducts().then(
         (value) {
           loading.value = false;
@@ -64,11 +67,12 @@ class ProductManagementService extends GetxService {
 
               if(product.seller == authService.userDataModel!.id)
                 {
-                  allProductsOfCurrentUser.add(product);
+                  //Optimise reverse
+                  allProductsOfCurrentUser.insert(0,product);
                 }
               else
                 {
-                  allProductsInShop.add(product);
+                  allProductsInShop.insert(0,product);
                 }
             }
         },
@@ -90,5 +94,16 @@ class ProductManagementService extends GetxService {
       getAllCategories();
     }
     return [];
+  }
+
+  Future<void> updateProduct({required ProductEntity productEntity})async {
+    await productManagementRepository.updateProduct(productEntity).then((value) {
+      getAllUserProducts();
+    },);
+  }
+
+  Future<void> deleteProduct({required String id})async{
+   await productManagementRepository.deleteProduct(id);
+   await getAllUserProducts();
   }
 }
