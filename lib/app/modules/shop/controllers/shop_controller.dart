@@ -29,6 +29,6 @@ class ShopController extends GetxController {
     super.onClose();
   }
 
-  void goToRentOrBuyProduct({required ProductEntity productEntity}) => Get.toNamed(Routes.EDIT_PRODUCT,arguments: productEntity);
+  void goToRentOrBuyProduct({required ProductEntity productEntity}) => Get.toNamed(Routes.PRODUCT_RENT_OR_BUY,arguments: productEntity);
 
 }

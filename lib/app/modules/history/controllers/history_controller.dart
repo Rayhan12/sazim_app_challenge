@@ -1,9 +1,14 @@
 import 'package:get/get.dart';
+import 'package:sazim_app/app/core/services/product_management_service.dart';
+
+import '../../../domain/entities/product_entity.dart';
+import '../../../routes/app_pages.dart';
 
 class HistoryController extends GetxController {
-  //TODO: Implement HistoryController
+  final ProductManagementService productManagementService;
 
-  final count = 0.obs;
+  HistoryController({required this.productManagementService});
+
   @override
   void onInit() {
     super.onInit();
@@ -19,5 +24,4 @@ class HistoryController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
 }

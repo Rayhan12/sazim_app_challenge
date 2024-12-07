@@ -98,6 +98,7 @@ class _ProductCardState extends State<ProductCard> with TickerProviderStateMixin
                     overflow: TextOverflow.ellipsis,
                     maxLines: hasAnimatedToFullText ? 20 : 2,
                   ),
+                  if(widget.productEntity.description.toString().length > 60)
                   InkWell(
                     onTap: () {
                       if (!hasAnimatedToFullText) {

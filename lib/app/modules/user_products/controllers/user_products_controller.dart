@@ -26,6 +26,8 @@ class UserProductsController extends GetxController {
 
   @override
   void onInit() {
+    productManagementService.getAllPurchases();
+    productManagementService.getAllRents();
     productManagementService.getAllCategories();
     productManagementService.getAllUserProducts();
     super.onInit();

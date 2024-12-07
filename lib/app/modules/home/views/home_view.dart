@@ -18,6 +18,7 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: controller.currentPage.value == 2 ,
         title: Obx(() {
           if(controller.currentPage.value == 2)
             {

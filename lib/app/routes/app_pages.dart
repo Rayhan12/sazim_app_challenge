@@ -22,6 +22,8 @@ import '../modules/product_management/bindings/product_management_binding.dart';
 import '../modules/product_management/views/product_management_view.dart';
 import '../modules/product_pricing_setup/bindings/product_pricing_setup_binding.dart';
 import '../modules/product_pricing_setup/views/product_pricing_setup_view.dart';
+import '../modules/product_rent_or_buy/bindings/product_rent_or_buy_binding.dart';
+import '../modules/product_rent_or_buy/views/product_rent_or_buy_view.dart';
 import '../modules/shop/bindings/shop_binding.dart';
 import '../modules/shop/views/shop_view.dart';
 import '../modules/user_products/bindings/user_products_binding.dart';
@@ -99,6 +101,11 @@ class AppPages {
       name: _Paths.EDIT_PRODUCT,
       page: () => const EditProductView(),
       binding: EditProductBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_RENT_OR_BUY,
+      page: () => const ProductRentOrBuyView(),
+      binding: ProductRentOrBuyBinding(),
     ),
   ];
 }

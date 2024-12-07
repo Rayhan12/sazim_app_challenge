@@ -43,6 +43,28 @@ class SubmitRoutingStrategy implements RoutingType{
   IconAlignment getIconAlignment() => IconAlignment.end;
 }
 
+class PurchaseRoutingStrategy implements RoutingType{
+  @override
+  String getName() => "Purchase";
+
+  @override
+  IconData getIconData() => RIcon.Tag_Price;
+
+  @override
+  IconAlignment getIconAlignment() => IconAlignment.end;
+}
+
+class RentRoutingStrategy implements RoutingType{
+  @override
+  String getName() => "Rent";
+
+  @override
+  IconData getIconData() => RIcon.Wallet_Money;
+
+  @override
+  IconAlignment getIconAlignment() => IconAlignment.end;
+}
+
 
 class RoutingButton extends StatelessWidget {
   final RoutingType routingType;

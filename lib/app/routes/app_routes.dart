@@ -16,6 +16,7 @@ abstract class Routes {
   static const PRODUCT_PRICING_SETUP = _Paths.PRODUCT_PRICING_SETUP;
   static const PRODUCT_CREATION_SUMMARY = _Paths.PRODUCT_CREATION_SUMMARY;
   static const EDIT_PRODUCT = _Paths.EDIT_PRODUCT;
+  static const PRODUCT_RENT_OR_BUY = _Paths.PRODUCT_RENT_OR_BUY;
 }
 
 abstract class _Paths {
@@ -33,4 +34,5 @@ abstract class _Paths {
   static const PRODUCT_PRICING_SETUP = '/product-pricing-setup';
   static const PRODUCT_CREATION_SUMMARY = '/product-creation-summary';
   static const EDIT_PRODUCT = '/edit-product';
+  static const PRODUCT_RENT_OR_BUY = '/product-rent-or-buy';
 }
