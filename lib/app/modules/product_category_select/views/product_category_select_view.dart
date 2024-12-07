@@ -34,11 +34,14 @@ class ProductCategorySelectView
                 errorMessage: "Select at lets one category",
                 fieldTitle: "Select Categories",
                 needTitle: true,
-                itemBuilder: controller.getCategories().map((e) {
-                  return DropdownItem<CategoryModel>(label: e.label.toString(), value: e);
+                itemBuilder: controller.productCreationService.listCategories.map((e) {
+                  return DropdownItem<CategoryModel>(label: e.label.toString(), value: e , selected: controller.selectedItems.contains(e));
                 },).toList(),
                 needValidation: true,
                 prefixIcon: RIcon.Box_Minimalistic,
+                onValueChange: (val){
+                  controller.saveData();
+                },
               ),
             ),
 

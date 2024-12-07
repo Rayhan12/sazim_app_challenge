@@ -15,9 +15,16 @@ class ProductCategorySelectController extends GetxController {
   final categoryController = MultiSelectController<CategoryModel>();
   final formKey = GlobalKey<FormState>(debugLabel: "Category Form");
 
+  List<CategoryModel> selectedItems = [];
+
   @override
   void onInit() {
     productCreationService.setProgress(index: index);
+    for(var selected in productCreationService.categories)
+    {
+      CategoryModel model =  productCreationService.listCategories.firstWhere((element) => element.value.toString().compareTo(selected.value!) == 0,);
+      selectedItems.add(model);
+    }
     categoryController.addItems(productCreationService.categories.map((element) => DropdownItem<CategoryModel>(label: element.label.toString(), value: element,selected: true),).toList());
     if(!productCreationService.categoryLoaded) productCreationService.getAllCategories();
     super.onInit();
@@ -44,6 +51,11 @@ class ProductCategorySelectController extends GetxController {
       productCreationService.updateProductCategory(categories: categoryController.selectedItems.map((e) => e.value).toList());
       Get.toNamed(Routes.PRODUCT_DESCRIPTION_ENTER);
     }
+  }
+
+  void saveData()
+  {
+    productCreationService.updateProductCategory(categories: categoryController.selectedItems.map((e) => e.value).toList());
   }
 
   void goToPreviousPage(){

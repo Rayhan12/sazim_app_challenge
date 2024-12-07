@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -15,17 +15,6 @@ import 'package:sazim_app/app/core/utility/firebase_message_util.dart';
 
 import 'app/routes/app_pages.dart';
 
-Future<void> loadEnv() async {
-  try {
-    await dotenv.load(fileName: ".env");
-    print(dotenv.env['BASE_URL']);
-    if (kDebugMode) {
-      print("Environment variables loaded successfully.");
-    }
-  } catch (e) {
-    throw Exception("Failed to load .env file: $e");
-  }
-}
 
 Future<void> _backgroundHandler(RemoteMessage message) async {
   await FCMUtil.instance.handleBackgroundNotification(message);
@@ -43,7 +32,6 @@ void main() async{
   DependencyInjection.init();
   await GetStorage.init();
   await BiometricAuthUtil.instance.biometricConfig();
-  await loadEnv();
 
 
   // making the the system top bar transparent
